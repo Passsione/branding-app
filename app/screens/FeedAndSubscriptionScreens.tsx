@@ -239,18 +239,62 @@ const Ico = {
 const SA_FLAG_URI =
   'https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg';
 
+// ─── Universal Background Image ───────────────────────────────
+// React Native's <Image> does NOT support SVG URLs natively.
+// This component detects SVGs and renders them via react-native-svg's
+// SvgUri, falling back to a regular <Image> for all raster formats
+// (PNG, JPG, WebP, GIF, etc.) — so any URL you pass in will work.
+//
+// Install once if not already in your project:
+//   npx expo install react-native-svg
+//
+interface UniversalBgImageProps {
+  uri: string;
+  opacity?: number;
+}
+const UniversalBgImage: React.FC<UniversalBgImageProps> = ({ uri, opacity = 0.12 }) => {
+  // Detect SVG by extension or by common SVG CDN patterns (e.g. Wikimedia)
+  const isSvg =
+    /\.svg(\?.*)?$/i.test(uri) ||
+    uri.includes('wikipedia.org') ||
+    uri.includes('wikimedia.org');
+
+  if (isSvg) {
+    // Lazily require SvgUri so the app doesn't crash if react-native-svg
+    // isn't installed — it'll just show nothing, same as before.
+    let SvgUri: React.ComponentType<{ uri: string; width: string | number; height: string | number }> | null = null;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      SvgUri = require('react-native-svg').SvgUri;
+    } catch (_) {
+      // react-native-svg not installed — silently skip
+    }
+    if (!SvgUri) return null;
+    return (
+      <View style={[flagStyles.container, { opacity }]} pointerEvents="none">
+        <SvgUri uri={uri} width="100%" height="100%" />
+      </View>
+    );
+  }
+
+  // Raster image (PNG, JPG, WebP, GIF, …)
+  return (
+    <View style={[flagStyles.container, { opacity }]} pointerEvents="none">
+      <Image
+        source={{ uri }}
+        style={flagStyles.image}
+        resizeMode="cover"
+      />
+    </View>
+  );
+};
+
 const SAFlagBackground: React.FC = () => (
-  <View style={flagStyles.container} pointerEvents="none">
-    <Image
-      source={{ uri: SA_FLAG_URI }}
-      style={flagStyles.image}
-      resizeMode="cover"
-    />
-  </View>
+  <UniversalBgImage uri={SA_FLAG_URI} opacity={0.12} />
 );
 
 const flagStyles = StyleSheet.create({
-  container: { ...StyleSheet.absoluteFillObject, opacity: 0.12, zIndex: 0 },
+  container: { ...StyleSheet.absoluteFillObject, zIndex: 0 },
   image:     { width: '100%', height: '100%' },
 });
 
@@ -978,8 +1022,7 @@ export const SubscriptionScreen: React.FC<SubscriptionScreenProps> = ({ onBack }
             iOS billing via App Store · Android via Google Play
           </Text>
         </View>
-      {/* </ScrollView> */}
-
+      
       {confirmPlan && confirmPlanData && (
         <View style={styles.sheetBackdrop}>
           <TouchableWithoutFeedback onPress={() => setConfirmPlan(null)}>
