@@ -1,4 +1,4 @@
-// src/services/followService.ts
+// services/followService.ts
 // =====================================================
 // FOLLOW / UNFOLLOW SERVICE
 // =====================================================

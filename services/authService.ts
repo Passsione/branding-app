@@ -1,4 +1,4 @@
-// src/services/authService.ts
+// services/authService.ts
 // =====================================================
 // AUTHENTICATION SERVICE
 // =====================================================

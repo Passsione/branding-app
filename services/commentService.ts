@@ -1,4 +1,4 @@
-// src/services/commentService.ts
+// services/commentService.ts
 // =====================================================
 // COMMENT SERVICE
 // =====================================================

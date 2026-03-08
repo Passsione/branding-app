@@ -1,4 +1,4 @@
-// src/services/subscriptionService.ts
+// services/subscriptionService.ts
 // =====================================================
 // SUBSCRIPTION SERVICE
 // Supports two integration paths:

@@ -1,9 +1,28 @@
-// src/types/index.ts
+// types/index.ts
 // =====================================================
 // COMPLETE TYPE DEFINITIONS
 // =====================================================
 
 import { Timestamp } from 'firebase/firestore';
+
+// ─────────────────────────────────────────────────────────────
+// Colour Palette Picker
+// ─────────────────────────────────────────────────────────────
+export const PALETTE = [
+  // Warm / brand tones
+  '#9B5035', '#7D3F2A', '#B8704E', '#C8901A', '#E8A820',
+  '#c0443a', '#8B2020', '#D4614A', '#A0522D', '#CD853F',
+  // Cool / neutral
+  '#3d9eff', '#2255BB', '#9b6dff', '#5a3d99', '#00e5b0',
+  '#1a7a5e', '#5a9e6a', '#2E8B57', '#607D8B', '#455A64',
+  // Dark / deep
+  '#1c100a', '#0d0806', '#2e1a0e', '#120a07', '#1c1c2e',
+  '#1a1a2e', '#16213e', '#0f3460', '#1b1b2f', '#2d2d44',
+  // Light / neutral
+  '#f5ede6', '#c4a090', '#9e7e6a', '#ffffff', '#e8e0d8',
+];
+
+
 
 // ─────────────────────────────────────────────
 // SUBSCRIPTION PLANS
@@ -145,6 +164,8 @@ export interface Post {
   mentions: string[];       // userIds mentioned
   location?: {
     name: string;
+    city: string;
+    country: string;
     lat: number;
     lng: number;
   };

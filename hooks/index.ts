@@ -1,4 +1,4 @@
-// src/hooks/index.ts
+// hooks/index.ts
 // =====================================================
 // REACT HOOKS — Auth, Posts, Follows, Subscriptions
 // =====================================================

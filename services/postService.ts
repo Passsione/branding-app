@@ -1,4 +1,4 @@
-// src/services/postService.ts
+// services/postService.ts
 // =====================================================
 // POST SERVICE — CRUD, LIKES, FEED
 // =====================================================
