@@ -546,22 +546,6 @@ const BrandMgmtSheet: React.FC<{ brand: Brand; onClose: () => void }> = ({ brand
               <Text style={bm.colorBannerSub}>{form.primaryColor}  →  {form.secondaryColor}</Text>
             </LinearGradient>
 
-            {/* Go Live */}
-            <View style={bm.liveRow}>
-              <View style={{ flex: 1 }}>
-                <Text style={[bm.liveLabel, form.isLive && { color: C.like }]}>
-                  {form.isLive ? '● Broadcasting Live' : '○ Go Live'}
-                </Text>
-                <Text style={bm.liveSub}>Show your brand as broadcasting live</Text>
-              </View>
-              <Switch
-                value={form.isLive}
-                onValueChange={v => set('isLive', v)}
-                trackColor={{ false: C.muted, true: C.like + 'aa' }}
-                thumbColor={form.isLive ? C.like : C.sub}
-              />
-            </View>
-
             {/* Editable fields */}
             {([
               ['Brand Name',   'name',     'e.g. jacket.co',              'default',   'default'],
@@ -603,7 +587,7 @@ const BrandMgmtSheet: React.FC<{ brand: Brand; onClose: () => void }> = ({ brand
 
             {/* Revenue */}
             <View style={bm.fg}>
-              <FL gold>Monthly Revenue (USD)</FL>
+              <FL gold>Monthly Revenue (ZAR)</FL>
               <TextInput
                 value={String(form.revenue)}
                 onChangeText={v => set('revenue', parseFloat(v) || 0)}
@@ -874,12 +858,13 @@ export default function ProfileScreen({ onGoToPremium }: ProfileScreenProps) {
                     <Text style={{ fontSize: 36 }}>{isBrand ? '🏷' : '👤'}</Text>
                   </View>
               }
-              {u?.isVerified && (
-                <View style={s.verifiedBadge}><Text style={s.verifiedText}>✓</Text></View>
-              )}
               {isBrand && ownedBrand!.isLive && (
                 <View style={s.liveBadge}><Text style={s.liveBadgeText}>LIVE</Text></View>
               )}
+              {u?.isVerified && (
+                <View style={s.verifiedBadge}><Text style={s.verifiedText}>✓</Text></View>
+              )}
+              
             </Animated.View>
 
             {/* Status pill (brands) or plan badge (users) */}
@@ -899,6 +884,7 @@ export default function ProfileScreen({ onGoToPremium }: ProfileScreenProps) {
                 </Text>
               </View>
             )}
+
           </View>
 
           {/* Name */}
@@ -979,6 +965,7 @@ export default function ProfileScreen({ onGoToPremium }: ProfileScreenProps) {
         <View style={s.gridSection}>
           <View style={s.gridSectionHeader}>
             <Text style={s.gridSectionLabel}>✦ POSTS</Text>
+            <View style={s.liveButton}><Text style={s.liveButtonText}>LIVE</Text></View>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
               {!postsLoading && <Text style={s.gridSectionCount}>{posts.length} posts</Text>}
               {isBrand && (
@@ -1068,7 +1055,7 @@ export default function ProfileScreen({ onGoToPremium }: ProfileScreenProps) {
 // Styles
 // ─────────────────────────────────────────────────────────────
 const s = StyleSheet.create({
-  safe:     { flex: 1, backgroundColor: C.bg },
+  safe:     { flex: 1, backgroundColor: C.bg, top: 31 },
   centered: { flex: 1, alignItems: 'center', justifyContent: 'center' },
 
   stickyHeader: { position: 'absolute', top: Platform.OS === 'ios' ? 54 : 32, left: 0, right: 0, alignItems: 'center', zIndex: 10 },
@@ -1086,6 +1073,8 @@ const s = StyleSheet.create({
   avatar:        { width: 88, height: 88, borderRadius: 24, borderWidth: 3, borderColor: C.primaryDk },
   verifiedBadge: { position: 'absolute', bottom: -4, right: -4, width: 22, height: 22, borderRadius: 11, backgroundColor: C.gold, alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderColor: C.surface },
   verifiedText:  { color: C.bg, fontSize: 10, fontWeight: '900' },
+  liveButton:     { top: 0, left: 6, backgroundColor: C.like, borderRadius:12, height: 32,  width: 42,  paddingHorizontal: 6, paddingVertical: 2, borderWidth: 1.5, borderColor: C.surface },
+  liveButtonText: { color: '#fff', fontSize: 8, fontWeight: '900', letterSpacing: 0.5, left: "15%", top: "35%" },
   liveBadge:     { position: 'absolute', top: -6, left: -6, backgroundColor: C.like, borderRadius: 6, paddingHorizontal: 6, paddingVertical: 2, borderWidth: 1.5, borderColor: C.surface },
   liveBadgeText: { color: '#fff', fontSize: 8, fontWeight: '900', letterSpacing: 0.5 },
   planBadge:     { paddingHorizontal: 12, paddingVertical: 4, borderRadius: 10 },

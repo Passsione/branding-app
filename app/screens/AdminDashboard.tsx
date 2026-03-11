@@ -283,11 +283,49 @@ const EditSheet: React.FC<EditSheetProps> = ({ brand, onSave, onClose, saving })
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={{ paddingBottom: 40 }}
           >
+            {/* Brand Account Credentials — create mode only */}
+            {isCreate && (
+              <View style={[s.fieldGroup, { paddingTop: 14, marginTop: 4 }]}>
+                <Text style={[s.fieldLabel, { color: C.gold, marginBottom: 10 }]}>
+                  🔑  BRAND ACCOUNT LOGIN
+                </Text>
+                <Text style={{ color: C.sub, fontSize: 11, marginBottom: 14, lineHeight: 16 }}>
+                  A Firebase account will be created with these credentials. Share them with the brand owner so they can log in.
+                </Text>
+                <FieldLabel>Brand Email</FieldLabel>
+                <TextInput
+                  value={brandEmail}
+                  onChangeText={setBrandEmail}
+                  style={[s.input, { marginBottom: 12 }]}
+                  placeholderTextColor={C.muted}
+                  autoCapitalize="none"
+                  keyboardType="email-address"
+                  placeholder="brand@example.com"
+                />
+                <FieldLabel>Password</FieldLabel>
+                <View style={{ position: 'relative' }}>
+                  <TextInput
+                    value={brandPassword}
+                    onChangeText={setBrandPassword}
+                    style={[s.input, { paddingRight: 48 }]}
+                    placeholderTextColor={C.muted}
+                    secureTextEntry={!showPassword}
+                    placeholder="Min. 6 characters"
+                  />
+                  <TouchableOpacity
+                    onPress={() => setShowPassword(v => !v)}
+                    style={{ position: 'absolute', right: 12, top: 12 }}
+                  >
+                    <Text style={{ color: C.sub, fontSize: 13 }}>{showPassword ? '🙈' : '👁'}</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            )}
             {/* Brand colour preview */}
             <LinearGradient
               colors={[form.primaryColor || '#333', form.secondaryColor || '#111']}
               start={{ x: 0, y: 0 }} end={{ x: 1, y: 1 }}
-              style={s.colorPreview}
+              style={[s.colorPreview, ]}
             >
               <Text style={s.colorPreviewText}>{form.name || 'Brand Name'}</Text>
               <Text style={s.colorPreviewSub}>{form.primaryColor} → {form.secondaryColor}</Text>
@@ -377,7 +415,7 @@ const EditSheet: React.FC<EditSheetProps> = ({ brand, onSave, onClose, saving })
             {/* Revenue — edit mode only (brand manages this themselves) */}
             {!isCreate && (
               <View style={s.fieldGroup}>
-                <FieldLabel>Monthly Revenue (USD)</FieldLabel>
+                <FieldLabel>Monthly Revenue (ZAR)</FieldLabel>
                 <TextInput
                   value={String(form.revenue)}
                   onChangeText={v => set('revenue', parseFloat(v) || 0)}
@@ -387,53 +425,15 @@ const EditSheet: React.FC<EditSheetProps> = ({ brand, onSave, onClose, saving })
             )}
 
             {/* Owner UID — shown in edit mode only (auto-set on create) */}
-            {!isCreate && (
+            {/* {!isCreate && (
               <View style={s.fieldGroup}>
                 <FieldLabel>Owner UID (read only)</FieldLabel>
                 <View style={[s.input, { opacity: 0.5 }]}>
                   <Text style={{ color: C.sub, fontSize: 12 }}>{form.ownerUid ?? 'Not set'}</Text>
                 </View>
               </View>
-            )}
+            )} */}
 
-            {/* Brand Account Credentials — create mode only */}
-            {isCreate && (
-              <View style={[s.fieldGroup, { borderTopWidth: 1, borderTopColor: C.border2, paddingTop: 14, marginTop: 4 }]}>
-                <Text style={[s.fieldLabel, { color: C.gold, marginBottom: 10 }]}>
-                  🔑  BRAND ACCOUNT LOGIN
-                </Text>
-                <Text style={{ color: C.sub, fontSize: 11, marginBottom: 14, lineHeight: 16 }}>
-                  A Firebase account will be created with these credentials. Share them with the brand owner so they can log in.
-                </Text>
-                <FieldLabel>Brand Email</FieldLabel>
-                <TextInput
-                  value={brandEmail}
-                  onChangeText={setBrandEmail}
-                  style={[s.input, { marginBottom: 12 }]}
-                  placeholderTextColor={C.muted}
-                  autoCapitalize="none"
-                  keyboardType="email-address"
-                  placeholder="brand@example.com"
-                />
-                <FieldLabel>Password</FieldLabel>
-                <View style={{ position: 'relative' }}>
-                  <TextInput
-                    value={brandPassword}
-                    onChangeText={setBrandPassword}
-                    style={[s.input, { paddingRight: 48 }]}
-                    placeholderTextColor={C.muted}
-                    secureTextEntry={!showPassword}
-                    placeholder="Min. 6 characters"
-                  />
-                  <TouchableOpacity
-                    onPress={() => setShowPassword(v => !v)}
-                    style={{ position: 'absolute', right: 12, top: 12 }}
-                  >
-                    <Text style={{ color: C.sub, fontSize: 13 }}>{showPassword ? '🙈' : '👁'}</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
 
             {/* Plan & Status */}
             <View style={[s.row, { paddingHorizontal: 16, gap: 12, marginBottom: 14 }]}>
@@ -459,7 +459,7 @@ const EditSheet: React.FC<EditSheetProps> = ({ brand, onSave, onClose, saving })
                 ['isVerified', '✓ Verified', C.primary, '#2f251acb'],
                 ['flagged',    '⚑ Flagged',  C.like,    '#2f1a1a'],
                 // isLive is managed by the brand themselves, only show in edit mode
-                ...(!isCreate ? [['isLive', '● Live', C.gold, '#2f2510'] as const] : []),
+                // ...(!isCreate ? [['isLive', '● Live', C.gold, '#2f2510'] as const] : []),
               ] as const).map(([k, lbl, activeColor, activeBg]) => (
                 <TouchableOpacity
                   key={k}
@@ -576,9 +576,9 @@ const DetailSheet: React.FC<DetailSheetProps> = ({
               ))}
             </View>
 
-            <Text style={s.detailMeta}>
+            {/* <Text style={s.detailMeta}>
               ID: {brand.id}{brand.ownerUid ? `\nOwner: ${brand.ownerUid}` : '  ·  Admin-owned'}
-            </Text>
+            </Text> */}
 
             {/* Edit */}
             <TouchableOpacity onPress={() => onEdit(brand)} activeOpacity={0.85} style={{ marginBottom: 10 }}>
@@ -967,7 +967,7 @@ export default function AdminDashboard() {
 
 // ── Styles ────────────────────────────────────────────────────
 const s = StyleSheet.create({
-  safe:          { flex: 1, backgroundColor: C.bg },
+  safe:          { flex: 1, backgroundColor: C.bg, top: 24 },
   row:           { flexDirection: 'row', alignItems: 'center' },
 
   topBar:        { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', paddingHorizontal: 20, paddingTop: 14, paddingBottom: 12, borderBottomWidth: 1, borderBottomColor: C.border },

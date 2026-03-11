@@ -32,8 +32,8 @@ export type SubscriptionTier = 'free' | 'basic' | 'pro' | 'creator';
 export interface SubscriptionPlan {
   id: SubscriptionTier;
   name: string;
-  priceMonthly: number;  // USD cents
-  priceYearly: number;   // USD cents
+  priceMonthly: number;  // ZAR cents
+  priceYearly: number;   // ZAR cents
   features: {
     maxPostsPerDay: number;        // -1 = unlimited
     canGoLive: boolean;

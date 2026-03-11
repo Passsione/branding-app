@@ -150,7 +150,7 @@ export default function ExploreScreen({ onNavigateToBrand }: ExploreScreenProps)
 
   const [search,   setSearch]   = useState('');
   const [category, setCategory] = useState('All');
-  const [tab,      setTab]      = useState<'brands' | 'posts'>('brands');
+  const [tab,      setTab]      = useState<'posts' | 'brands'>('posts');
   const searchFocused = useRef(false);
   const user  = useAuth().userProfile;
 
@@ -198,8 +198,8 @@ export default function ExploreScreen({ onNavigateToBrand }: ExploreScreenProps)
 
       {/* Collapsing title */}
       <Animated.View style={[s.titleBar, { height: headerHeight, overflow: 'hidden' }]}>
-        <Text style={s.titleLabel}>✦ DISCOVER</Text>
-        <Text style={s.titleText}>Explore</Text>
+        {/* <Text style={s.titleLabel}>✦ DISCOVER</Text>
+        <Text style={s.titleText}>Explore</Text> */}
       </Animated.View>
 
       {/* Search bar */}
@@ -227,7 +227,7 @@ export default function ExploreScreen({ onNavigateToBrand }: ExploreScreenProps)
 
       {/* Tab switcher */}
       <View style={s.tabRow}>
-        {(['brands', 'posts'] as const).map(t => (
+        {([ 'posts', 'brands'] as const).map(t => (
           <TouchableOpacity key={t} onPress={() => setTab(t)} style={[s.tabBtn, tab === t && s.tabBtnActive]}>
             <Text style={[s.tabBtnText, tab === t && s.tabBtnTextActive]}>
               {t === 'brands' ? '🏷  Brands' : '⊞  Posts'}

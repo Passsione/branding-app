@@ -57,7 +57,7 @@ export interface Brand {
   flagged: boolean;
   subscribersCount: number;
   postsCount: number;
-  revenue: number;         // monthly in USD
+  revenue: number;         // monthly in ZAR
   ownerUid: string | null; // uid of brand owner (non-admin), null = admin-owned
   createdAt: any;
   updatedAt: any;

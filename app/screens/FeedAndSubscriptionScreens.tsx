@@ -52,79 +52,6 @@ const C = {
   green:       '#5a9e6a',
 };
 
-// ─── Brand data comes from Firestore via useBrands() ─────────
-// See BrandCarousel component below — it calls useBrands() directly.
-// The BRANDS constant is removed; all data is live from Firebase.
-
-// ─── Legacy shape kept for BrandScreen prop compatibility ─────
-// BrandScreen accepts a Brand from brandService directly.
-
-const _LEGACY_BRANDS_REMOVED = [
-  {
-    id: 'b1', name: 'jacket.co', handle: '@jacket.co',
-    tagline: 'GOOD VIBES / GREAT BREWS',
-    logo: 'https://i.pravatar.cc/150?img=10',
-    coverImage: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900',
-    isLive: true, liveViewers: 1432, subscribers: 24800,
-    subscribedBy: 'mogale_t.g and 3 others', isSubscribed: false,
-    fonts: ['LEXTON', 'ARIAL NOVA'],
-    bio: 'jacket.co is a modern streetwear brand celebrating bold design and community culture.',
-    posts: [
-      { id: 'b1p1', image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600', likes: 812 },
-      { id: 'b1p2', image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600', likes: 1204 },
-      { id: 'b1p3', image: 'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600', likes: 634 },
-      { id: 'b1p4', image: 'https://images.unsplash.com/photo-1563630381190-77c336ea545a?w=600', likes: 980 },
-      { id: 'b1p5', image: 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=600', likes: 445 },
-      { id: 'b1p6', image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600', likes: 2010 },
-    ],
-  },
-  {
-    id: 'b2', name: 'lux.noir', handle: '@lux.noir',
-    tagline: 'DARK ELEGANCE / BOLD EDGE',
-    logo: 'https://i.pravatar.cc/150?img=20',
-    coverImage: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900',
-    isLive: false, liveViewers: 0, subscribers: 18300,
-    subscribedBy: 'priya_k and 5 others', isSubscribed: true,
-    fonts: ['NOIR', 'HELVETICA'],
-    bio: 'lux.noir curates avant-garde fashion for those who lead with darkness and confidence.',
-    posts: [
-      { id: 'b2p1', image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600', likes: 2340 },
-      { id: 'b2p2', image: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600', likes: 1890 },
-      { id: 'b2p3', image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600', likes: 3100 },
-      { id: 'b2p4', image: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600', likes: 765 },
-    ],
-  },
-  {
-    id: 'b3', name: 'terra.roots', handle: '@terra.roots',
-    tagline: 'EARTH / CRAFT / CULTURE',
-    logo: 'https://i.pravatar.cc/150?img=30',
-    coverImage: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900',
-    isLive: true, liveViewers: 876, subscribers: 11500,
-    subscribedBy: 'alex.mv and 2 others', isSubscribed: false,
-    fonts: ['EARTHEN', 'BODONI'],
-    bio: 'terra.roots crafts handmade goods inspired by African heritage and natural materials.',
-    posts: [
-      { id: 'b3p1', image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600', likes: 450 },
-      { id: 'b3p2', image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=600', likes: 880 },
-      { id: 'b3p3', image: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?w=600', likes: 612 },
-    ],
-  },
-  {
-    id: 'b4', name: 'vibe.studio', handle: '@vibe.studio',
-    tagline: 'COLOUR / CHAOS / JOY',
-    logo: 'https://i.pravatar.cc/150?img=40',
-    coverImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900',
-    isLive: false, liveViewers: 0, subscribers: 9200,
-    subscribedBy: 'lila.art and 8 others', isSubscribed: false,
-    fonts: ['FUTURA', 'GROTESK'],
-    bio: 'vibe.studio is a creative lab for colour-forward streetwear with playful prints.',
-    posts: [
-      { id: 'b4p1', image: 'https://images.unsplash.com/photo-1504703395950-b89145a5425b?w=600', likes: 570 },
-      { id: 'b4p2', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600', likes: 1340 },
-    ],
-  },
-];
-
 // ─── Waveform ─────────────────────────────────────────────────
 const WAVE = [3, 8, 5, 13, 9, 6, 14, 4, 11, 7, 15, 5, 10, 4, 8, 12, 6, 9];
 
@@ -237,7 +164,7 @@ const Ico = {
 // Public domain. Via Wikimedia Commons:
 // https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg
 const SA_FLAG_URI =
-  'https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg';
+  "D:/Kh/Colours_primary.jpeg"// 'https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg';
 
 // ─── Universal Background Image ───────────────────────────────
 // React Native's <Image> does NOT support SVG URLs natively.
@@ -290,7 +217,7 @@ const UniversalBgImage: React.FC<UniversalBgImageProps> = ({ uri, opacity = 0.12
 };
 
 const SAFlagBackground: React.FC = () => (
-  <UniversalBgImage uri={SA_FLAG_URI} opacity={0.12} />
+  <UniversalBgImage uri={SA_FLAG_URI} opacity={0.92} />
 );
 
 const flagStyles = StyleSheet.create({
@@ -448,27 +375,30 @@ const BrandCarouselCard: React.FC<BrandCarouselCardProps> = ({ brand, onPress })
 
   return (
     <TouchableOpacity onPress={onPress} onPressIn={onPressIn} onPressOut={onPressOut} activeOpacity={1}>
+      
       <Animated.View style={[bStyles.card, { transform: [{ scale: scaleAnim }] }]}>
         {brand.coverUrl
           ? <Image source={{ uri: brand.coverUrl }} style={bStyles.coverImg} />
           : <View style={[bStyles.coverImg, { backgroundColor: brand.primaryColor || '#1a0e09' }]} />
         }
-        <View style={bStyles.cardOverlay} />
-        {brand.isLive && (
-          <View style={bStyles.liveBadge}>
-            <Text style={bStyles.liveText}>● LIVE</Text>
-          </View>
-        )}
-        <View style={bStyles.cardBottom}>
+
+        <View style={bStyles.cardTitlelay} />
+      
+        <View style={bStyles.cardTop}>
+          {/* {brand.isLive && (
+            <View style={bStyles.liveBadge}>
+              <Text style={bStyles.liveText}>● LIVE</Text>
+            </View>
+          )} */}
           {brand.logoUrl
-            ? <Image source={{ uri: brand.logoUrl }} style={bStyles.logo} />
-            : <View style={[bStyles.logo, { backgroundColor: brand.primaryColor || C.primaryDk, alignItems: 'center', justifyContent: 'center' }]}>
+            ? <Image source={{ uri: brand.logoUrl }} style={[bStyles.logo, { borderWidth: brand.isLive ? 2 : 1, borderColor: brand.isLive ? 'rgb(255, 0, 0)' : C.gold }]} />
+            : <View style={[bStyles.logo, { borderWidth: brand.isLive ? 2 : 1, borderColor: brand.isLive ? 'rgb(255, 0, 0)' : C.gold, backgroundColor: brand.primaryColor || C.primaryDk, alignItems: 'center', justifyContent: 'center' }]}>
                 <Text style={{ color: '#fff', fontSize: 18 }}>🏷</Text>
               </View>
           }
           <View style={bStyles.cardInfo}>
             <Text style={bStyles.cardName} numberOfLines={1}>{brand.name}</Text>
-            <Text style={bStyles.cardTagline} numberOfLines={1}>{brand.tagline}</Text>
+            <Text style={bStyles.cardTagline} numberOfLines={1}>{brand.handle}</Text>
           </View>
           {/* Subscribe hint — tappable */}
 
@@ -477,18 +407,24 @@ const BrandCarouselCard: React.FC<BrandCarouselCardProps> = ({ brand, onPress })
               style={[bStyles.subHint, subscribed && bStyles.subHintActive]}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             >
-              
               <Text style={bStyles.subHintIcon}>{subscribed ? '🔔' : '+'}</Text>
-
             </TouchableOpacity>
         </View>
+        
+        {/* <View style={bStyles.cardOverlay} /> */}
+        {/* {brand.isLive && (
+          <View style={bStyles.liveBadge}>
+            <Text style={bStyles.liveText}>● LIVE</Text>
+          </View>
+        )} */}
+        
       </Animated.View>
     </TouchableOpacity>
   );
 };
 
 const CARD_WIDTH  = SCREEN_WIDTH * 0.62;
-const CARD_HEIGHT = CARD_WIDTH * 1.42;
+const CARD_HEIGHT = CARD_WIDTH * 2;
 
 const bStyles = StyleSheet.create({
   card: {
@@ -498,11 +434,12 @@ const bStyles = StyleSheet.create({
     shadowColor: '#000', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.45, shadowRadius: 16, elevation: 10,
   },
   coverImg:      { width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 },
-  cardOverlay:   { position: 'absolute', bottom: 0, left: 0, right: 0, height: '55%', backgroundColor: 'rgba(13,8,6,0.85)' },
+  cardOverlay:   { position: 'absolute', bottom: 0, left: 0, right: 0, height: '18%', backgroundColor: 'rgba(13,8,6,0.85)' },
   liveBadge:     { position: 'absolute', top: 12, right: 12, backgroundColor: C.like, paddingHorizontal: 10, paddingVertical: 4, borderRadius: 20 },
   liveText:      { color: '#fff', fontSize: 11, fontWeight: '800', letterSpacing: 0.8 },
-  cardBottom:    { position: 'absolute', bottom: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingBottom: 16, paddingTop: 10, gap: 10 },
-  logo:          { width: 42, height: 42, borderRadius: 21, borderWidth: 2, borderColor: C.gold },
+  cardTitlelay:  { position: 'absolute', top: 0, left: 0, right: 0, height: '12%', backgroundColor: 'rgba(13,8,6,0.85)' },
+  cardTop:       { position: 'absolute', top: 0, left: 0, right: 0, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 12, paddingBottom: 16, paddingTop: 10, gap: 10 },
+  logo:          { width: 32, height: 32, borderRadius: 17, borderWidth: 1, borderColor: C.gold },
   cardInfo:      { flex: 1 },
   cardName:      { fontSize: 15, fontWeight: '800', color: C.text, fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif', letterSpacing: -0.3 },
   cardTagline:   { fontSize: 10, color: C.goldLt, letterSpacing: 1.2, marginTop: 2 },
@@ -526,9 +463,9 @@ const BrandCarousel: React.FC<BrandCarouselProps> = ({ onBrandPress }) => {
           <Text style={carStyles.sectionLabel}>✦ BRANDS</Text>
           {/* <Text style={carStyles.sectionTitle}>Subscribed Brands</Text> */}
         </View>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Text style={carStyles.seeAll}>See all →</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
 
       {loading ? (
@@ -560,7 +497,7 @@ const BrandCarousel: React.FC<BrandCarouselProps> = ({ onBrandPress }) => {
 };
 
 const carStyles = StyleSheet.create({
-  section:       { marginTop: 16, marginBottom: 8 },
+  section:       { marginTop: 66, marginBottom: 8 },
   header:        { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', paddingHorizontal: 16, marginBottom: 14 },
   sectionLabel:  { fontSize: 10, color: C.gold, letterSpacing: 2, fontWeight: '700', marginBottom: 3 },
   sectionTitle:  { fontSize: 20, fontWeight: '800', color: C.text, fontFamily: Platform.OS === 'ios' ? 'Georgia' : 'serif' },
@@ -633,7 +570,7 @@ export const BrandScreen: React.FC<BrandScreenProps> = ({ brand, onBack }) => {
         )}
 
         <TouchableOpacity style={brandStyles.backBtn} onPress={onBack}>
-          <Text style={{ fontSize: 22, color: '#fff' }}>←</Text>
+          <Text style={{ top: -5,  fontSize: 22, color: '#fff' }}>←</Text>
         </TouchableOpacity>
         <View style={brandStyles.eyeBtn}>
           <Text style={{ fontSize: 18, color: '#fff' }}>👁</Text>
@@ -656,14 +593,14 @@ export const BrandScreen: React.FC<BrandScreenProps> = ({ brand, onBack }) => {
             <Text style={brandStyles.subscribedText}>
               {brand.subscribersCount.toLocaleString()} SUBSCRIBERS
             </Text>
-            <TouchableOpacity
+            {/* <TouchableOpacity
               onPress={toggleSub}
               style={[brandStyles.followBtn, subscribed && brandStyles.followBtnActive]}
             >
               <Text style={[brandStyles.followBtnText, subscribed && { color: C.text }]}>
                 {subscribed ? 'Following' : 'follow'}
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
 
           <Text style={brandStyles.brandName}>{brand.name}</Text>
@@ -794,13 +731,13 @@ export default function FeedScreen({ onNavigateToSubscription, onNavigateToBrand
     <View>
       {/* Navbar */}
       <View style={styles.navbar}>
-        <Text style={styles.navBrand}>{userProfile?.username ?? 'Feed'}</Text>
+        {/* <Text style={styles.navBrand}>Feed</Text> */}
         <View style={styles.navActions} />
       </View>
-      <View style={styles.divider} />
+      {/* <View style={styles.divider} /> */}
       {/* Brand carousel */}
       <BrandCarousel onBrandPress={onNavigateToBrand} />
-      <View style={styles.divider} />
+      {/* <View style={styles.divider} /> */}
     </View>
   );
 
@@ -846,8 +783,8 @@ export default function FeedScreen({ onNavigateToSubscription, onNavigateToBrand
         ListFooterComponent={
           loadingMore
             ? <View style={styles.loader}><ActivityIndicator color={C.primary} /></View>
-            : !hasMore
-            ? <View style={styles.loader}><Text style={{ color: C.muted, fontSize: 12 }}>You're all caught up ✦</Text></View>
+            // : !hasMore
+            // ? <View style={styles.loader}><Text style={{ color: C.muted, fontSize: 12 }}>You're all caught up ✦</Text></View>
             : null
         }
         // Performance
@@ -1053,7 +990,7 @@ export const SubscriptionScreen: React.FC<SubscriptionScreenProps> = ({ onBack }
 
 // ─── Shared Styles ────────────────────────────────────────────
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: C.bg },
+  screen: { flex: 1, backgroundColor: C.bg, top: 21 },
 
   navbar: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',
