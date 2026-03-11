@@ -567,7 +567,7 @@ const DetailSheet: React.FC<DetailSheetProps> = ({
               {[
                 ['Posts',      fmtNum(brand.postsCount),       C.text  ],
                 ['Subscribers',fmtNum(brand.subscribersCount),  C.text  ],
-                ['Revenue',    brand.revenue > 0 ? `$${brand.revenue}/mo` : '—', C.primary],
+                ['Revenue',    brand.revenue > 0 ? `R${brand.revenue}/mo` : '—', C.primary],
               ].map(([l, v, c]) => (
                 <View key={l as string} style={s.statCard}>
                   <Text style={s.statLabel}>{l as string}</Text>
@@ -844,7 +844,7 @@ export default function AdminDashboard() {
             {[
               ['Total',   brands.length,                  C.text  ],
               ['Active',  activeCount,                     C.primary],
-              ['MRR',     `$${totalRevenue.toFixed(0)}`,  C.primaryDk],
+              ['MRR',     `R${totalRevenue.toFixed(0)}`,  C.primaryDk],
               ['Flagged', flaggedCount, flaggedCount > 0 ? C.like : C.muted],
             ].map(([l, v, c]) => (
               <View key={l as string} style={s.stripStat}>

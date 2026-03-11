@@ -807,7 +807,7 @@ export default function ProfileScreen({ onGoToPremium }: ProfileScreenProps) {
     ? [
         { label: 'SUBSCRIBERS', value: ownedBrand!.subscribersCount ?? 0 },
         { label: 'POSTS',       value: ownedBrand!.postsCount       ?? 0 },
-        { label: 'REVENUE',     value: ownedBrand!.revenue > 0 ? `$${ownedBrand!.revenue}` : '—' },
+        { label: 'REVENUE',     value: ownedBrand!.revenue > 0 ? `R${ownedBrand!.revenue}` : '—' },
       ]
     : [
         { label: 'POSTS',     value: u?.postsCount     ?? posts.length },

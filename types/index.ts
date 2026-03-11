@@ -64,8 +64,8 @@ export const SUBSCRIPTION_PLANS: Record<SubscriptionTier, SubscriptionPlan> = {
   basic: {
     id: 'basic',
     name: 'Basic',
-    priceMonthly: 499,   // $4.99/mo
-    priceYearly: 3999,   // $39.99/yr
+    priceMonthly: 499,   // R4.99/mo
+    priceYearly: 3999,   // R39.99/yr
     features: {
       maxPostsPerDay: 30,
       canGoLive: false,
@@ -79,8 +79,8 @@ export const SUBSCRIPTION_PLANS: Record<SubscriptionTier, SubscriptionPlan> = {
   pro: {
     id: 'pro',
     name: 'Pro',
-    priceMonthly: 999,   // $9.99/mo
-    priceYearly: 7999,   // $79.99/yr
+    priceMonthly: 999,   // R9.99/mo
+    priceYearly: 7999,   // R79.99/yr
     features: {
       maxPostsPerDay: -1,
       canGoLive: true,
@@ -94,8 +94,8 @@ export const SUBSCRIPTION_PLANS: Record<SubscriptionTier, SubscriptionPlan> = {
   creator: {
     id: 'creator',
     name: 'Creator',
-    priceMonthly: 1999,  // $19.99/mo
-    priceYearly: 15999,  // $159.99/yr
+    priceMonthly: 1999,  // R19.99/mo
+    priceYearly: 15999,  // R159.99/yr
     features: {
       maxPostsPerDay: -1,
       canGoLive: true,
